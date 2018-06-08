@@ -20,7 +20,6 @@ package com.jaamsim.Samples;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.jaamsim.BasicObjects.ExpressionEntity;
 import com.jaamsim.basicsim.Entity;
 import com.jaamsim.input.Input;
 import com.jaamsim.input.InputErrorException;
@@ -121,9 +120,6 @@ public class SampleInput extends Input<SampleProvider> {
 		super.validate();
 
 		if (value == null) return;
-		if (value instanceof SampleExpression) return;
-		if (value instanceof ExpressionEntity) return;
-		if (value instanceof SampleConstant) return;
 
 		Input.assertUnitsMatch(unitType, value.getUnitType());
 
