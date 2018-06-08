@@ -76,17 +76,17 @@ public class SampleExpression implements SampleProvider {
 
 	@Override
 	public double getMeanValue(double simTime) {
-		return 0;
+		return getNextSample(simTime);
 	}
 
 	@Override
 	public double getMinValue() {
-		return Double.NEGATIVE_INFINITY;
+		return getNextSample(0.0d);
 	}
 
 	@Override
 	public double getMaxValue() {
-		return Double.POSITIVE_INFINITY;
+		return getNextSample(0.0d);
 	}
 
 	public String getExpressionString() {
