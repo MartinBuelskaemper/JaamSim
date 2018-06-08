@@ -1,6 +1,7 @@
 /*
  * JaamSim Discrete Event Simulation
  * Copyright (C) 2014 Ausenco Engineering Canada Inc.
+ * Copyright (C) 2018 JaamSim Software Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,17 +75,23 @@ public class ExpressionEntity extends DisplayEntity implements SampleProvider {
 
 	@Override
 	public double getMeanValue(double simTime) {
-		return 0;
+		if (sampleValue.getValue() == null)
+			return 0.0d;
+		return sampleValue.getValue().getMeanValue(simTime);
 	}
 
 	@Override
 	public double getMinValue() {
-		return Double.NEGATIVE_INFINITY;
+		if (sampleValue.getValue() == null)
+			return Double.NEGATIVE_INFINITY;
+		return sampleValue.getValue().getMinValue();
 	}
 
 	@Override
 	public double getMaxValue() {
-		return Double.POSITIVE_INFINITY;
+		if (sampleValue.getValue() == null)
+			return Double.POSITIVE_INFINITY;
+		return sampleValue.getValue().getMaxValue();
 	}
 
 	@Override
